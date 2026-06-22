@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #f0ece8;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.invite-wrapper {
+  width: 680px;
+  max-width: 100%;
+}
+
+.invite-card {
+  background: #faf8f4;
+  border: 1.5px solid #c9b8d4;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  padding: 60px 70px 55px;
+  box-shadow: 0 4px 32px rgba(90,60,120,0.07);
+}
+
+/* Linen texture overlay */
+.invite-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(160,130,180,0.04) 3px, rgba(160,130,180,0.04) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(160,130,180,0.03) 3px, rgba(160,130,180,0.03) 4px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Corner decorations */
+.corner {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  z-index: 1;
+  pointer-events: none;
+}
+.corner-tl { top: -8px; left: -8px; }
+.corner-tr { top: -8px; right: -8px; transform: scaleX(-1); }
+.corner-bl { bottom: -8px; left: -8px; transform: scaleY(-1); }
+.corner-br { bottom: -8px; right: -8px; transform: scale(-1,-1); }
+
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+/* Thin decorative line */
+.deco-line {
+  width: 80px;
+  height: 0.75px;
+  background: linear-gradient(90deg, transparent, #b8a0cc, transparent);
+  margin: 0 auto;
+}
+
+.diamond-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 12px 0;
+}
+.diamond {
+  width: 5px;
+  height: 5px;
+  background: #d4a8c7;
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+.diamond.small {
+  width: 3px;
+  height: 3px;
+  background: #c9bcd8;
+}
+
+.title-brinde {
+  font-family: 'Great Vibes', cursive;
+  font-size: 58px;
+  color: #7b5ea7;
+  line-height: 1.1;
+  letter-spacing: 1px;
+  margin: 4px 0 8px;
+}
+
+.subtitle-decor {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #c9a0bb;
+  margin: 4px 0 20px;
+}
+
+.body-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16.5px;
+  line-height: 1.85;
+  color: #4a3660;
+  font-weight: 300;
+  font-style: italic;
+  text-align: justify;
+  hyphens: auto;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.highlight-phrase {
+  font-style: normal;
+  color: #7b5ea7;
+  font-weight: 400;
+}
+
+.section-divider {
+  margin: 22px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.div-line {
+  width: 80px;
+  height: 0.5px;
+  background: linear-gradient(90deg, transparent, #c9b8d4);
+}
+.div-line.right {
+  background: linear-gradient(90deg, #c9b8d4, transparent);
+}
+.div-flower {
+  font-size: 14px;
+  color: #d4a8c7;
+}
+
+.event-block {
+  background: rgba(178,150,210,0.07);
+  border: 0.75px solid #d0bce0;
+  border-radius: 3px;
+  padding: 22px 30px 18px;
+  margin: 20px auto 0;
+  max-width: 380px;
+}
+
+.event-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 28px;
+  color: #9b7bc0;
+  margin-bottom: 14px;
+}
+
+.event-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 8px 0;
+  text-align: left;
+}
+
+.event-icon {
+  font-size: 14px;
+  color: #d4a8c7;
+  min-width: 18px;
+  margin-top: 1px;
+}
+
+.event-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #c9a0bb;
+  display: block;
+  margin-bottom: 1px;
+}
+
+.event-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  color: #4a3660;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.closing-note {
+  font-family: 'Great Vibes', cursive;
+  font-size: 22px;
+  color: #c9a0bb;
+  margin-top: 6px;
+}
+</style>
+</head>
+<body>
+<div class="invite-wrapper">
+<div class="invite-card">
+
+  <!-- Corner SVG decorations -->
+  <svg class="corner corner-tl" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+    <!-- Lavender sprigs watercolor style -->
+    <!-- Main stems -->
+    <path d="M20 150 Q35 110 45 70 Q50 45 55 20" fill="none" stroke="#b8a0cc" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M10 140 Q28 105 40 75" fill="none" stroke="#c9b8d4" stroke-width="1" stroke-linecap="round"/>
+    <path d="M35 155 Q55 120 60 80 Q65 55 68 30" fill="none" stroke="#a889be" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- Olive branches -->
+    <path d="M8 130 Q30 115 50 125" fill="none" stroke="#7a9a5c" stroke-width="1" stroke-linecap="round"/>
+    <path d="M15 118 Q40 105 60 110" fill="none" stroke="#8aab68" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M5 108 Q25 95 48 98" fill="none" stroke="#6b8850" stroke-width="1" stroke-linecap="round"/>
+    <!-- Lavender buds on stem 1 -->
+    <ellipse cx="43" cy="72" rx="4" ry="6" fill="#c9a0bb" opacity="0.7" transform="rotate(-15,43,72)"/>
+    <ellipse cx="47" cy="61" rx="3.5" ry="5.5" fill="#b88db0" opacity="0.65" transform="rotate(-10,47,61)"/>
+    <ellipse cx="50" cy="51" rx="3" ry="5" fill="#d4b8d8" opacity="0.6" transform="rotate(-8,50,51)"/>
+    <ellipse cx="52" cy="42" rx="2.5" ry="4.5" fill="#c9a0bb" opacity="0.55" transform="rotate(-5,52,42)"/>
+    <ellipse cx="54" cy="34" rx="2" ry="4" fill="#b88db0" opacity="0.5" transform="rotate(-3,54,34)"/>
+    <ellipse cx="55" cy="27" rx="1.5" ry="3" fill="#d4b8d8" opacity="0.45"/>
+    <!-- Small side buds -->
+    <ellipse cx="38" cy="67" rx="3" ry="5" fill="#c9a0bb" opacity="0.6" transform="rotate(20,38,67)"/>
+    <ellipse cx="49" cy="57" rx="2.5" ry="4" fill="#b88db0" opacity="0.55" transform="rotate(15,49,57)"/>
+    <ellipse cx="52" cy="46" rx="2" ry="3.5" fill="#d4b8d8" opacity="0.5" transform="rotate(12,52,46)"/>
+    <!-- Lavender buds on stem 3 -->
+    <ellipse cx="62" cy="82" rx="4" ry="6" fill="#b88db0" opacity="0.65" transform="rotate(-20,62,82)"/>
+    <ellipse cx="65" cy="70" rx="3.5" ry="5" fill="#c9a0bb" opacity="0.6" transform="rotate(-15,65,70)"/>
+    <ellipse cx="67" cy="59" rx="3" ry="4.5" fill="#d4b8d8" opacity="0.55" transform="rotate(-10,67,59)"/>
+    <ellipse cx="68" cy="48" rx="2.5" ry="4" fill="#b88db0" opacity="0.5" transform="rotate(-5,68,48)"/>
+    <ellipse cx="68" cy="39" rx="2" ry="3" fill="#c9a0bb" opacity="0.45"/>
+    <!-- Olive leaves -->
+    <ellipse cx="18" cy="128" rx="7" ry="3.5" fill="#7a9a5c" opacity="0.6" transform="rotate(-30,18,128)"/>
+    <ellipse cx="30" cy="122" rx="7" ry="3" fill="#8aab68" opacity="0.55" transform="rotate(-15,30,122)"/>
+    <ellipse cx="45" cy="126" rx="6" ry="3" fill="#6b8850" opacity="0.6" transform="rotate(10,45,126)"/>
+    <ellipse cx="20" cy="116" rx="6" ry="2.8" fill="#7a9a5c" opacity="0.5" transform="rotate(-25,20,116)"/>
+    <ellipse cx="34" cy="108" rx="7" ry="3" fill="#8aab68" opacity="0.55" transform="rotate(-10,34,108)"/>
+    <ellipse cx="46" cy="102" rx="5.5" ry="2.5" fill="#6b8850" opacity="0.5" transform="rotate(5,46,102)"/>
+    <ellipse cx="12" cy="105" rx="6" ry="2.5" fill="#7a9a5c" opacity="0.45" transform="rotate(-35,12,105)"/>
+    <!-- Small flowers / dots -->
+    <circle cx="40" cy="78" r="1.5" fill="#f0c8e0" opacity="0.7"/>
+    <circle cx="55" cy="55" r="1.2" fill="#f0c8e0" opacity="0.6"/>
+    <circle cx="60" cy="88" r="1.5" fill="#f0c8e0" opacity="0.65"/>
+    <circle cx="25" cy="125" r="2" fill="#f5d4e8" opacity="0.6"/>
+    <circle cx="42" cy="112" r="1.5" fill="#f0c8e0" opacity="0.55"/>
+  </svg>
+
+  <svg class="corner corner-tr" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20 150 Q35 110 45 70 Q50 45 55 20" fill="none" stroke="#b8a0cc" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M10 140 Q28 105 40 75" fill="none" stroke="#c9b8d4" stroke-width="1" stroke-linecap="round"/>
+    <path d="M35 155 Q55 120 60 80 Q65 55 68 30" fill="none" stroke="#a889be" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M8 130 Q30 115 50 125" fill="none" stroke="#7a9a5c" stroke-width="1" stroke-linecap="round"/>
+    <path d="M15 118 Q40 105 60 110" fill="none" stroke="#8aab68" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M5 108 Q25 95 48 98" fill="none" stroke="#6b8850" stroke-width="1" stroke-linecap="round"/>
+    <ellipse cx="43" cy="72" rx="4" ry="6" fill="#c9a0bb" opacity="0.7" transform="rotate(-15,43,72)"/>
+    <ellipse cx="47" cy="61" rx="3.5" ry="5.5" fill="#b88db0" opacity="0.65" transform="rotate(-10,47,61)"/>
+    <ellipse cx="50" cy="51" rx="3" ry="5" fill="#d4b8d8" opacity="0.6" transform="rotate(-8,50,51)"/>
+    <ellipse cx="52" cy="42" rx="2.5" ry="4.5" fill="#c9a0bb" opacity="0.55" transform="rotate(-5,52,42)"/>
+    <ellipse cx="54" cy="34" rx="2" ry="4" fill="#b88db0" opacity="0.5" transform="rotate(-3,54,34)"/>
+    <ellipse cx="38" cy="67" rx="3" ry="5" fill="#c9a0bb" opacity="0.6" transform="rotate(20,38,67)"/>
+    <ellipse cx="49" cy="57" rx="2.5" ry="4" fill="#b88db0" opacity="0.55" transform="rotate(15,49,57)"/>
+    <ellipse cx="62" cy="82" rx="4" ry="6" fill="#b88db0" opacity="0.65" transform="rotate(-20,62,82)"/>
+    <ellipse cx="65" cy="70" rx="3.5" ry="5" fill="#c9a0bb" opacity="0.6" transform="rotate(-15,65,70)"/>
+    <ellipse cx="67" cy="59" rx="3" ry="4.5" fill="#d4b8d8" opacity="0.55" transform="rotate(-10,67,59)"/>
+    <ellipse cx="68" cy="48" rx="2.5" ry="4" fill="#b88db0" opacity="0.5" transform="rotate(-5,68,48)"/>
+    <ellipse cx="18" cy="128" rx="7" ry="3.5" fill="#7a9a5c" opacity="0.6" transform="rotate(-30,18,128)"/>
+    <ellipse cx="30" cy="122" rx="7" ry="3" fill="#8aab68" opacity="0.55" transform="rotate(-15,30,122)"/>
+    <ellipse cx="45" cy="126" rx="6" ry="3" fill="#6b8850" opacity="0.6" transform="rotate(10,45,126)"/>
+    <ellipse cx="20" cy="116" rx="6" ry="2.8" fill="#7a9a5c" opacity="0.5" transform="rotate(-25,20,116)"/>
+    <ellipse cx="34" cy="108" rx="7" ry="3" fill="#8aab68" opacity="0.55" transform="rotate(-10,34,108)"/>
+    <ellipse cx="12" cy="105" rx="6" ry="2.5" fill="#7a9a5c" opacity="0.45" transform="rotate(-35,12,105)"/>
+    <circle cx="40" cy="78" r="1.5" fill="#f0c8e0" opacity="0.7"/>
+    <circle cx="55" cy="55" r="1.2" fill="#f0c8e0" opacity="0.6"/>
+    <circle cx="60" cy="88" r="1.5" fill="#f0c8e0" opacity="0.65"/>
+    <circle cx="25" cy="125" r="2" fill="#f5d4e8" opacity="0.6"/>
+  </svg>
+
+  <svg class="corner corner-bl" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20 150 Q35 110 45 70 Q50 45 55 20" fill="none" stroke="#b8a0cc" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M10 140 Q28 105 40 75" fill="none" stroke="#c9b8d4" stroke-width="1" stroke-linecap="round"/>
+    <path d="M35 155 Q55 120 60 80 Q65 55 68 30" fill="none" stroke="#a889be" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M8 130 Q30 115 50 125" fill="none" stroke="#7a9a5c" stroke-width="1" stroke-linecap="round"/>
+    <path d="M15 118 Q40 105 60 110" fill="none" stroke="#8aab68" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M5 108 Q25 95 48 98" fill="none" stroke="#6b8850" stroke-width="1" stroke-linecap="round"/>
+    <ellipse cx="43" cy="72" rx="4" ry="6" fill="#c9a0bb" opacity="0.7" transform="rotate(-15,43,72)"/>
+    <ellipse cx="47" cy="61" rx="3.5" ry="5.5" fill="#b88db0" opacity="0.65" transform="rotate(-10,47,61)"/>
+    <ellipse cx="50" cy="51" rx="3" ry="5" fill="#d4b8d8" opacity="0.6" transform="rotate(-8,50,51)"/>
+    <ellipse cx="52" cy="42" rx="2.5" ry="4.5" fill="#c9a0bb" opacity="0.55" transform="rotate(-5,52,42)"/>
+    <ellipse cx="38" cy="67" rx="3" ry="5" fill="#c9a0bb" opacity="0.6" transform="rotate(20,38,67)"/>
+    <ellipse cx="49" cy="57" rx="2.5" ry="4" fill="#b88db0" opacity="0.55" transform="rotate(15,49,57)"/>
+    <ellipse cx="62" cy="82" rx="4" ry="6" fill="#b88db0" opacity="0.65" transform="rotate(-20,62,82)"/>
+    <ellipse cx="65" cy="70" rx="3.5" ry="5" fill="#c9a0bb" opacity="0.6" transform="rotate(-15,65,70)"/>
+    <ellipse cx="67" cy="59" rx="3" ry="4.5" fill="#d4b8d8" opacity="0.55" transform="rotate(-10,67,59)"/>
+    <ellipse cx="18" cy="128" rx="7" ry="3.5" fill="#7a9a5c" opacity="0.6" transform="rotate(-30,18,128)"/>
+    <ellipse cx="30" cy="122" rx="7" ry="3" fill="#8aab68" opacity="0.55" transform="rotate(-15,30,122)"/>
+    <ellipse cx="45" cy="126" rx="6" ry="3" fill="#6b8850" opacity="0.6" transform="rotate(10,45,126)"/>
+    <ellipse cx="20" cy="116" rx="6" ry="2.8" fill="#7a9a5c" opacity="0.5" transform="rotate(-25,20,116)"/>
+    <ellipse cx="34" cy="108" rx="7" ry="3" fill="#8aab68" opacity="0.55" transform="rotate(-10,34,108)"/>
+    <circle cx="40" cy="78" r="1.5" fill="#f0c8e0" opacity="0.7"/>
+    <circle cx="25" cy="125" r="2" fill="#f5d4e8" opacity="0.6"/>
+  </svg>
+
+  <svg class="corner corner-br" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20 150 Q35 110 45 70 Q50 45 55 20" fill="none" stroke="#b8a0cc" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M10 140 Q28 105 40 75" fill="none" stroke="#c9b8d4" stroke-width="1" stroke-linecap="round"/>
+    <path d="M35 155 Q55 120 60 80 Q65 55 68 30" fill="none" stroke="#a889be" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M8 130 Q30 115 50 125" fill="none" stroke="#7a9a5c" stroke-width="1" stroke-linecap="round"/>
+    <path d="M15 118 Q40 105 60 110" fill="none" stroke="#8aab68" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M5 108 Q25 95 48 98" fill="none" stroke="#6b8850" stroke-width="1" stroke-linecap="round"/>
+    <ellipse cx="43" cy="72" rx="4" ry="6" fill="#c9a0bb" opacity="0.7" transform="rotate(-15,43,72)"/>
+    <ellipse cx="47" cy="61" rx="3.5" ry="5.5" fill="#b88db0" opacity="0.65" transform="rotate(-10,47,61)"/>
+    <ellipse cx="50" cy="51" rx="3" ry="5" fill="#d4b8d8" opacity="0.6" transform="rotate(-8,50,51)"/>
+    <ellipse cx="52" cy="42" rx="2.5" ry="4.5" fill="#c9a0bb" opacity="0.55" transform="rotate(-5,52,42)"/>
+    <ellipse cx="38" cy="67" rx="3" ry="5" fill="#c9a0bb" opacity="0.6" transform="rotate(20,38,67)"/>
+    <ellipse cx="62" cy="82" rx="4" ry="6" fill="#b88db0" opacity="0.65" transform="rotate(-20,62,82)"/>
+    <ellipse cx="65" cy="70" rx="3.5" ry="5" fill="#c9a0bb" opacity="0.6" transform="rotate(-15,65,70)"/>
+    <ellipse cx="18" cy="128" rx="7" ry="3.5" fill="#7a9a5c" opacity="0.6" transform="rotate(-30,18,128)"/>
+    <ellipse cx="30" cy="122" rx="7" ry="3" fill="#8aab68" opacity="0.55" transform="rotate(-15,30,122)"/>
+    <ellipse cx="45" cy="126" rx="6" ry="3" fill="#6b8850" opacity="0.6" transform="rotate(10,45,126)"/>
+    <ellipse cx="20" cy="116" rx="6" ry="2.8" fill="#7a9a5c" opacity="0.5" transform="rotate(-25,20,116)"/>
+    <circle cx="40" cy="78" r="1.5" fill="#f0c8e0" opacity="0.7"/>
+    <circle cx="25" cy="125" r="2" fill="#f5d4e8" opacity="0.6"/>
+  </svg>
+
+  <!-- Content -->
+  <div class="content">
+
+    <p class="subtitle-decor">com muito carinho</p>
+    <div class="deco-line"></div>
+
+    <h1 class="title-brinde">Um brinde à vida!</h1>
+
+    <div class="diamond-row">
+      <div class="diamond small"></div>
+      <div class="diamond"></div>
+      <div class="diamond small"></div>
+    </div>
+
+    <p class="body-text">
+      No dia <span class="highlight-phrase">06/08</span>, faço <span class="highlight-phrase">60 anos</span>. Resolvi comemorar com as pessoas que me trazem alegria. Pena não conseguir reunir todos — seria quase impossível, pois no meu coração tem tantos nomes importantes que nunca irei esquecer.
+    </p>
+
+    <br>
+
+    <p class="body-text">
+      O porquê de comemorar em grande estilo dessa vez? Porque deixo de usar somente uma mão para contar as minhas décadas de vida, vou precisar das duas agora para representar a minha idade. Isso me enche de orgulho, porque fui e estou sendo agraciada pelo <span class="highlight-phrase">dom da vida</span>. Deus me deu família, filho, meus pets, irmãos e amigos para estarem comigo.
+    </p>
+
+    <br>
+
+    <p class="body-text">
+      A maioria já está comigo há anos e sabe bem o que viver representa pra mim: sorriso no rosto, vontade de aprender, ser útil e, principalmente, feliz. E <span class="highlight-phrase">felicidade a gente não guarda num potinho, a gente espalha...</span>
+    </p>
+
+    <br>
+
+    <p class="body-text">
+      Espero contar com a presença de todos vocês para viver esse momento comigo e irradiar essa luz chamada <span class="highlight-phrase">fé</span>, de uma maneira bem feliz!
+    </p>
+
+    <div class="section-divider">
+      <div class="div-line"></div>
+      <span class="div-flower">✦</span>
+      <div class="div-line right"></div>
+    </div>
+
+    <!-- Event details block -->
+    <div class="event-block">
+      <div class="event-title">Detalhes do Evento</div>
+
+      <div class="event-row">
+        <span class="event-icon">✦</span>
+        <div>
+          <span class="event-label">Data</span>
+          <span class="event-value">07 de agosto de 2026 · Sexta-feira</span>
+        </div>
+      </div>
+
+      <div class="event-row">
+        <span class="event-icon">✦</span>
+        <div>
+          <span class="event-label">Horário</span>
+          <span class="event-value">A partir das 20h30</span>
+        </div>
+      </div>
+
+      <div class="event-row">
+        <span class="event-icon">✦</span>
+        <div>
+          <span class="event-label">Local</span>
+          <span class="event-value">Palácio Maçônico de Vila Velha</span>
+        </div>
+      </div>
+
+      <div class="event-row">
+        <span class="event-icon">✦</span>
+        <div>
+          <span class="event-label">Endereço</span>
+          <span class="event-value">Rua Jaime Duarte, 475 – Itapuã</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider" style="margin-top: 24px;">
+      <div class="div-line"></div>
+      <span class="div-flower">✦</span>
+      <div class="div-line right"></div>
+    </div>
+
+    <p class="closing-note">Sua presença é o meu maior presente</p>
+
+  </div>
+</div>
+</div>
+</body>
+</html>
